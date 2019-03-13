@@ -1,5 +1,7 @@
 # babel-plugin-react-intl
 
+_This has been forked off from [`babel-plugin-react-intl`](https://github.com/yahoo/babel-plugin-react-intl) with some additional options_
+
 Extracts string messages for translation from modules that use [React Intl][].
 ## Dependencies
 
@@ -14,7 +16,7 @@ This Babel plugin works with React Intl v2.x
 ## Installation
 
 ```sh
-$ npm install babel-plugin-react-intl
+$ yarn add --dev @allthings/babel-plugin-react-intl
 ```
 
 ## Usage
@@ -48,6 +50,14 @@ If a message descriptor has a `description`, it'll be removed from the source af
 - **`extractSourceLocation`**: Whether the metadata about the location of the message in the source file should be extracted. If `true`, then `file`, `start`, and `end` fields will exist for each extracted message descriptors. Defaults to `false`.
 
 - **`moduleSourceName`**: The ES6 module source name of the React Intl package. Defaults to: `"react-intl"`, but can be changed to another name/path to React Intl.
+
+- **`additionalComponentNames`**: To visit more than the components and `defineMessages` provided by `react-intl` set this option to the following format:
+
+  ```
+  "additionalComponentNames": {
+    "react-lingo": ["default", "LingoFormattedMessage"]
+  }
+  ```  
 
 ### Via Node API
 

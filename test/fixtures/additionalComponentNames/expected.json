@@ -1,0 +1,17 @@
+[
+  {
+    "id": "foo",
+    "description": "foo description",
+    "defaultMessage": "foo defaultMessage"
+  },
+  {
+    "id": "bar",
+    "description": "bar description",
+    "defaultMessage": "bar defaultMessage"
+  },
+  {
+    "id": "baz",
+    "description": "baz description",
+    "defaultMessage": "baz defaultMessage"
+  }
+]

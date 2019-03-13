@@ -233,7 +233,16 @@ export default function ({types: t}) {
                     return;
                 }
 
-                if (referencesImport(name, moduleSourceName, COMPONENT_NAMES)) {
+                const additionalComponents = opts.additionalComponentNames || [];
+                const additionalComponentNameMatches = Object.keys(additionalComponents).some(
+                    (moduleName) =>
+                        referencesImport(name, moduleName, additionalComponents[moduleName])
+                );
+
+                if (
+                    referencesImport(name, moduleSourceName, COMPONENT_NAMES) ||
+                    additionalComponentNameMatches
+                ) {
                     const attributes = path.get('attributes')
                         .filter((attr) => attr.isJSXAttribute());
 

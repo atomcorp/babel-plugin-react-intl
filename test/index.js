@@ -17,6 +17,7 @@ const skipTests = [
     'moduleSourceName',
     'icuSyntax',
     'removeDescriptions',
+    'additionalComponentNames',
 ];
 
 const fixturesDir = path.join(__dirname, 'fixtures');
@@ -98,6 +99,27 @@ describe('options', () => {
         try {
             transform(path.join(fixtureDir, 'actual.js'), {
                 moduleSourceName: 'react-i18n',
+            });
+            assert(true);
+        } catch (e) {
+            console.error(e);
+            assert(false);
+        }
+
+        // Check message output
+        const expectedMessages = fs.readFileSync(path.join(fixtureDir, 'expected.json'));
+        const actualMessages = fs.readFileSync(path.join(fixtureDir, 'actual.json'));
+        assert.equal(trim(actualMessages), trim(expectedMessages));
+    });
+
+    it('respects additionalComponentNames', () => {
+        const fixtureDir = path.join(fixturesDir, 'additionalComponentNames');
+
+        try {
+            transform(path.join(fixtureDir, 'actual.js'), {
+                additionalComponentNames: {
+                    'react-lingo': ['default', 'LingoFormattedNamed'],
+                },
             });
             assert(true);
         } catch (e) {
